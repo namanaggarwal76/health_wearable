@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpO2 Visualization</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h2>SpO2 Data</h2>
+        <canvas id="spo2Chart"></canvas>
+    </div>
+
+    <script>
+        const CHANNEL_ID = "2848133";
+        const API_KEY = "YV00RQWLDTRL6I4W";
+        const url = `https://api.thingspeak.com/channels/${CHANNEL_ID}/feeds.json?results=10&api_key=${API_KEY}`;
+
+        async function fetchData() {
+            const response = await fetch(url);
+            const data = await response.json();
+
+            const labels = data.feeds.map(feed => new Date(feed.created_at).toLocaleTimeString());
+            const spo2 = data.feeds.map(feed => feed.field2);
+
+            updateChart(labels, spo2);
+        }
+
+        function updateChart(labels, spo2) {
+            const ctx = document.getElementById('spo2Chart').getContext('2d');
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'SpO2 (%)',
+                        data: spo2,
+                        borderColor: 'blue',
+                        fill: false
+                    }]
+                }
+            });
+        }
+
+        fetchData();
+        setInterval(fetchData, 5000);
+    </script>
+</body>
+</html>

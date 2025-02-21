@@ -1,0 +1,11 @@
+body { margin: 0; font-family: Arial, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; background: #ccc; }
+
+.smart-watch { width: 500px; height: 500px; background: #222; border-radius: 30px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); position: relative; padding-top: 40px; color: #fff; }
+
+.time { text-align: center; font-size: 60px; margin-bottom: 80px; }
+
+.buttons { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
+.button { background: #fff; border: none; border-radius: 50%; width: 70px; height: 70px; display: flex; align-items: center; justify-content: center; cursor: pointer; }
+
+.button img { width: 40px; height: 40px; }

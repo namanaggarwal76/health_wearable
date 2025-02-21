@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Rate</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h2>Heart Rate Data</h2>
+    <canvas id="heartRateChart"></canvas>
+
+    <script>
+        const CHANNEL_ID = "2848133";
+        const API_KEY = "YV00RQWLDTRL6I4W";
+        const url = `https://api.thingspeak.com/channels/${CHANNEL_ID}/feeds.json?results=10&api_key=${API_KEY}`;
+
+        async function fetchData() {
+            const response = await fetch(url);
+            const data = await response.json();
+
+            const labels = data.feeds.map(feed => new Date(feed.created_at).toLocaleTimeString());
+            const values = data.feeds.map(feed => feed.field1);
+
+            updateChart(labels, values);
+        }
+
+        function updateChart(labels, values) {
+            const ctx = document.getElementById('heartRateChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Heart Rate (BPM)',
+                        data: values,
+                        borderColor: 'red',
+                        fill: false
+                    }]
+                }
+            });
+        }
+
+        fetchData();
+        setInterval(fetchData, 5000);
+    </script>
+</body>
+</html>

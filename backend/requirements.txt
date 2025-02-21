@@ -1,0 +1,3 @@
+Flask              # REST API Backend
+paho-mqtt          # MQTT Communication
+requests           # Fetch data from ThingSpeak
