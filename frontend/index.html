@@ -1,1 +1,30 @@
-<html lang="en"> <head> <meta charset="UTF-8" /> <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <title>Smart Watch Interface Simulation</title> <link rel="stylesheet" href="style.css" /> </head> <body> <div class="smart-watch"> <div id="time" class="time"></div> <div class="buttons"> <button class="button" onclick="openVisualization('heart-rate.html')"> <img src="https://icons8.com/icon/91340/heart" alt="Heart Rate" /> </button> <button class="button" onclick="openVisualization('spo2.html')"> <img src="https://img.icons8.com/fluency/48/000000/o2.png" alt="SpO2" /> </button> <button class="button" onclick="openVisualization('steps.html')"> <img src="https://img.icons8.com/fluency/48/000000/walking.png" alt="Steps" /> </button> <button class="button" onclick="openVisualization('temperature.html')"> <img src="https://img.icons8.com/fluency/48/000000/temperature.png" alt="Temperature" /> </button> </div> </div> <script src="script.js"></script> </body> </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart Watch Interface - Analog Clock</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="smart-watch">
+    <!-- Analog clock is rendered on this canvas -->
+    <canvas id="analogClock" width="300" height="300"></canvas>
+    <div class="buttons">
+      <button class="button" onclick="openVisualization('heart-rate.html')">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Heart_coraz%C3%B3n.svg/160px-Heart_coraz%C3%B3n.svg.png" alt="Heart Rate" />
+      </button>
+      <button class="button" onclick="openVisualization('spo2.html')">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwC9CSOx5HFaImS9Fz3nh7sTCnjEH-jSh8H7gxT-xMSgu9dPKrKasP8C93PddMEG7Ol3Q&usqp=CAU" alt="SpO2" />
+      </button>
+      <button class="button" onclick="openVisualization('steps.html')">
+        <img src="https://img.icons8.com/fluency/48/000000/walking.png" alt="Steps" />
+      </button>
+      <button class="button" onclick="openVisualization('temperature.html')">
+        <img src="https://img.icons8.com/fluency/48/000000/temperature.png" alt="Temperature" />
+      </button>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
